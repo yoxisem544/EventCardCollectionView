@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11535.1" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11523"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PhotoCarousell" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,7 +20,47 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-73-Jp2">
+                                <rect key="frame" x="16" y="629" width="46" height="30"/>
+                                <state key="normal" title="上一個"/>
+                                <connections>
+                                    <action selector="previoudButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GnR-CS-3c7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0B7-3M-xW7">
+                                <rect key="frame" x="313" y="629" width="46" height="30"/>
+                                <state key="normal" title="下一個"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZOP-YM-aFa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ch-Te-Kur">
+                                <rect key="frame" x="70" y="629" width="46" height="30"/>
+                                <state key="normal" title="最前面"/>
+                                <connections>
+                                    <action selector="veryFirstButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZcW-I4-y7b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rG1-Gg-HQd">
+                                <rect key="frame" x="259" y="629" width="46" height="30"/>
+                                <state key="normal" title="最後面"/>
+                                <connections>
+                                    <action selector="veryLastButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="boA-vd-8Rk"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9ch-Te-Kur" firstAttribute="centerY" secondItem="Po8-73-Jp2" secondAttribute="centerY" id="6KD-FK-CZd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0B7-3M-xW7" secondAttribute="bottom" constant="8" id="APw-qz-La5"/>
+                            <constraint firstItem="Po8-73-Jp2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QoC-I2-kYz"/>
+                            <constraint firstItem="rG1-Gg-HQd" firstAttribute="centerY" secondItem="0B7-3M-xW7" secondAttribute="centerY" id="TbC-gg-3FJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Po8-73-Jp2" secondAttribute="bottom" constant="8" id="XZW-b1-vvZ"/>
+                            <constraint firstItem="0B7-3M-xW7" firstAttribute="leading" secondItem="rG1-Gg-HQd" secondAttribute="trailing" constant="8" id="c1B-Yz-Bqj"/>
+                            <constraint firstItem="0B7-3M-xW7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="hke-8m-Rke"/>
+                            <constraint firstItem="9ch-Te-Kur" firstAttribute="leading" secondItem="Po8-73-Jp2" secondAttribute="trailing" constant="8" id="r8B-8H-hQ6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

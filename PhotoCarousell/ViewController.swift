@@ -12,11 +12,11 @@ public class ViewController: UIViewController {
 	
 	private var photoCarousellCollectionView: UICollectionView!
 	private var photoCarousellCollectionViewFlowLayout: UICollectionViewFlowLayout!
-	fileprivate let datumn: [String] = ["","","","",""]
-//	fileprivate let datumn: [String] = ["","","","","","","","","","","","","","","","",""]
+//	fileprivate let datumn: [String] = ["","","","",""]
+	fileprivate let datumn: [String] = ["","","","","","","","","","","","","","","","",""]
 	fileprivate let cellIdentifier = "cell"
-	let width: CGFloat = UIScreen.main.bounds.width * 0.7
-	let itemSpacing: CGFloat = 20
+	let width: CGFloat = UIScreen.main.bounds.width * 0.8
+	let itemSpacing: CGFloat = 12
 
 	override public func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,7 +24,7 @@ public class ViewController: UIViewController {
 		
 		// setup collection view flow layout
 		photoCarousellCollectionViewFlowLayout = UICollectionViewFlowLayout()
-		photoCarousellCollectionViewFlowLayout.itemSize = CGSize(width: width, height: width * 2)
+		photoCarousellCollectionViewFlowLayout.itemSize = CGSize(width: width, height: width * 1.5)
 		photoCarousellCollectionViewFlowLayout.scrollDirection = .horizontal
 		photoCarousellCollectionViewFlowLayout.minimumLineSpacing = itemSpacing
 		photoCarousellCollectionViewFlowLayout.minimumInteritemSpacing = 0
@@ -36,13 +36,11 @@ public class ViewController: UIViewController {
 		photoCarousellCollectionView.backgroundColor = UIColor.white
 		photoCarousellCollectionView.clipsToBounds = false
 		photoCarousellCollectionView.decelerationRate = 0.0
+		photoCarousellCollectionView.showsHorizontalScrollIndicator = false
 		
 		photoCarousellCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
 		photoCarousellCollectionView.dataSource = self
 		photoCarousellCollectionView.delegate = self
-		
-		photoCarousellCollectionView.layer.borderColor = UIColor.red.cgColor
-		photoCarousellCollectionView.layer.borderWidth = 3.0
 		
 		photoCarousellCollectionView.center = view.center
 		
@@ -55,6 +53,22 @@ public class ViewController: UIViewController {
 		moveCardToInitalLocation()
 	}
 
+	@IBAction func previoudButtonClicked(_ sender: Any) {
+		moveToPreviousCard()
+	}
+	
+	@IBAction func nextButtonClicked(_ sender: Any) {
+		moveToNextCard()
+	}
+	
+	@IBAction func veryFirstButtonClicked(_ sender: Any) {
+		moveCard(to: 0.0)
+	}
+	
+	@IBAction func veryLastButtonClicked(_ sender: Any) {
+		moveCard(to: CGFloat(DBL_MAX))
+	}
+	
 	override public func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -92,6 +106,21 @@ public class ViewController: UIViewController {
 	
 	fileprivate func moveCardToInitalLocation() {
 		moveCard(to: 0.0)
+	}
+	
+	fileprivate func moveToPreviousCard() {
+		moveCard(to: getCurrentCardPosition() - 1.0)
+	}
+	
+	fileprivate func moveToNextCard() {
+		moveCard(to: getCurrentCardPosition() + 1.0)
+	}
+	
+	fileprivate func getCurrentCardPosition() -> CGFloat {
+		let initialOffsetX: CGFloat = photoCarousellCollectionView.bounds.width / 2 - (width / 2)
+		let contentOffsetX = photoCarousellCollectionView.contentOffset.x + initialOffsetX
+		let currentEndDragPosition: CGFloat = contentOffsetX / (width + itemSpacing)
+		return currentEndDragPosition
 	}
 	
 	fileprivate func moveCard(toRawOffset offset: CGFloat) {
