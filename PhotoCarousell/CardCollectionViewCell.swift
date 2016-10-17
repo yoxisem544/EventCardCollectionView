@@ -14,6 +14,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 	private var cardTagViews: [UIView] = []
 	private var cardImageBottomBar: UIView!
 	private var eventParticipantImageViews: [UIImageView] = []
+	private var eventParticipantExtraInfoLabel: UILabel!
 	
 	private var cardContentContainerView: UIView!
 	private var cardTopTitleLabel: UILabel!
@@ -90,9 +91,14 @@ open class CardCollectionViewCell: UICollectionViewCell {
 			imageView.frame.origin.x = offset
 			return imageView.frame.maxX + participantSpacing
 		}
-		eventParticipantImageViews.forEach { $0.center.y = cardImageBottomBar.bounds.height / 2 }
-		eventParticipantImageViews.forEach { cardImageBottomBar.addSubview($0) }
-		eventParticipantImageViews.forEach { $0.image = UIImage(named: "r1.jpg") }
+		eventParticipantImageViews.forEach {
+			$0.center.y = cardImageBottomBar.bounds.height / 2
+			cardImageBottomBar.addSubview($0)
+			$0.image = UIImage(named: "r1.jpg")
+			$0.clipsToBounds = true
+			$0.contentMode = .scaleAspectFill
+			$0.layer.cornerRadius = $0.bounds.width / 2
+		}
 	}
 	
 	fileprivate func randomColor() -> UIColor {
