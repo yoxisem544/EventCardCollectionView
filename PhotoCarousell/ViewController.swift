@@ -17,6 +17,7 @@ public class ViewController: UIViewController {
 	fileprivate let cellIdentifier = "cell"
 	let width: CGFloat = UIScreen.main.bounds.width * 0.8
 	let itemSpacing: CGFloat = 12
+	fileprivate var markedCardOffsetX: CGFloat = 0.0
 
 	override public func viewDidLoad() {
 		super.viewDidLoad()
@@ -79,7 +80,7 @@ public class ViewController: UIViewController {
 	}
 
 	fileprivate func moveCard(to cardPosition: CGFloat) {
-//		print(#function, "is moving to ", cardPosition)
+		print(#function, "is moving to ", cardPosition)
 		guard cardPosition >= 0.0 else {
 			moveCard(to: 0.0)
 			return
@@ -90,8 +91,34 @@ public class ViewController: UIViewController {
 		}
 		let initialOffsetX: CGFloat = photoCarousellCollectionView.bounds.width / 2 - (width / 2)
 		let remainder = cardPosition.truncatingRemainder(dividingBy: 1.0)
-//		print("remainder: \(remainder)")
-		let nextPosition = remainder >= 0.5 ? ceil(cardPosition) : floor(cardPosition)
+		print("remainder: \(remainder)")
+//		let nextPosition = remainder >= 0.5 ? ceil(cardPosition) : floor(cardPosition)
+		let nextPosition = { () -> CGFloat in
+			let flipSensitiveConstant: CGFloat = 0.1
+			if markedCardOffsetX > cardPosition {
+				// move backward
+				print("is going to previous page")
+				if remainder < 1.0 - flipSensitiveConstant {
+					// flip
+					return max(0.0, floor(cardPosition))
+				} else {
+					// stay the same
+					return ceil(cardPosition)
+				}
+			} else {
+				// move forward
+				print("is going to next page")
+				if remainder > flipSensitiveConstant {
+					// flip
+					return ceil(cardPosition)
+				} else {
+					// stay the same
+					return floor(cardPosition)
+				}
+			}
+		}()
+		print("next position \(nextPosition)")
+		print("")
 		let nextOffset: CGFloat = nextPosition * (width + itemSpacing) - initialOffsetX
 		let contentOffset: CGPoint = CGPoint(x: nextOffset, y: 0)
 		photoCarousellCollectionView.setContentOffset(contentOffset, animated: true)
@@ -155,6 +182,10 @@ extension ViewController : UIScrollViewDelegate {
 	
 	public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 		moveCard(toRawOffset: targetContentOffset.pointee.x)
+	}
+	
+	public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+		markedCardOffsetX = getCurrentCardPosition()
 	}
 	
 }

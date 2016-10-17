@@ -53,6 +53,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		
 		configureCardImageBottomBar()
 		configureEventParticipantImageViews()
+		configureEventParticipantExtraInfoLabel()
 	}
 	
 	private func configureCardImageBottomBar() {
@@ -101,10 +102,31 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		}
 	}
 	
+	private func configureEventParticipantExtraInfoLabel() {
+		eventParticipantExtraInfoLabel = UILabel()
+		let spacing: CGFloat = 8
+		eventParticipantExtraInfoLabel.frame.size.width =
+			cardImageBottomBar.bounds.width
+			- (eventParticipantImageViews.last?.frame.maxX ?? 0.0)
+			- 2 * spacing
+		eventParticipantExtraInfoLabel.frame.size.height = 14
+		
+		eventParticipantExtraInfoLabel.font = UIFont.systemFont(ofSize: 12)
+		eventParticipantExtraInfoLabel.textColor = UIColor.white
+		
+		eventParticipantExtraInfoLabel.frame.origin.x = (eventParticipantImageViews.last?.frame.maxX ?? 0.0) + spacing
+		eventParticipantExtraInfoLabel.center.y = cardImageBottomBar.bounds.height / 2
+		
+		eventParticipantExtraInfoLabel.text = "yaaaaaaayaaaaaaayaaaaaaayaaaaaaa"
+		
+		cardImageBottomBar.addSubview(eventParticipantExtraInfoLabel)
+	}
+	
 	fileprivate func randomColor() -> UIColor {
-		let r = CGFloat(Int(arc4random() % 155) + 100) / 255.0
-		let g = CGFloat(Int(arc4random() % 155) + 100) / 255.0
-		let b = CGFloat(Int(arc4random() % 155) + 100) / 255.0
+		let colorRange = 200
+		let r = CGFloat(Int(arc4random()) % colorRange + 255 - colorRange) / 255.0
+		let g = CGFloat(Int(arc4random()) % colorRange + 255 - colorRange) / 255.0
+		let b = CGFloat(Int(arc4random()) % colorRange + 255 - colorRange) / 255.0
 		return UIColor(red: r, green: g, blue: b, alpha: 1)
 	}
 	
