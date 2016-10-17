@@ -38,7 +38,7 @@ public class ViewController: UIViewController {
 		photoCarousellCollectionView.decelerationRate = 0.0
 		photoCarousellCollectionView.showsHorizontalScrollIndicator = false
 		
-		photoCarousellCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+		photoCarousellCollectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
 		photoCarousellCollectionView.dataSource = self
 		photoCarousellCollectionView.delegate = self
 		
@@ -73,20 +73,13 @@ public class ViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
-	fileprivate func randomColor() -> UIColor {
-		let r = CGFloat(Int(arc4random() % 155) + 100) / 255.0
-		let g = CGFloat(Int(arc4random() % 155) + 100) / 255.0
-		let b = CGFloat(Int(arc4random() % 155) + 100) / 255.0
-		return UIColor(red: r, green: g, blue: b, alpha: 1)
-	}
 	
 	fileprivate func handleEndDrag(_ scrollView: UIScrollView) {
 		moveCard(toRawOffset: scrollView.contentOffset.x)
 	}
 
 	fileprivate func moveCard(to cardPosition: CGFloat) {
-		print(#function, "is moving to ", cardPosition)
+//		print(#function, "is moving to ", cardPosition)
 		guard cardPosition >= 0.0 else {
 			moveCard(to: 0.0)
 			return
@@ -97,7 +90,7 @@ public class ViewController: UIViewController {
 		}
 		let initialOffsetX: CGFloat = photoCarousellCollectionView.bounds.width / 2 - (width / 2)
 		let remainder = cardPosition.truncatingRemainder(dividingBy: 1.0)
-		print("remainder: \(remainder)")
+//		print("remainder: \(remainder)")
 		let nextPosition = remainder >= 0.5 ? ceil(cardPosition) : floor(cardPosition)
 		let nextOffset: CGFloat = nextPosition * (width + itemSpacing) - initialOffsetX
 		let contentOffset: CGPoint = CGPoint(x: nextOffset, y: 0)
@@ -127,7 +120,7 @@ public class ViewController: UIViewController {
 		let initialOffsetX: CGFloat = photoCarousellCollectionView.bounds.width / 2 - (width / 2)
 		let contentOffsetX = offset + initialOffsetX
 		let currentEndDragPosition: CGFloat = contentOffsetX / (width + itemSpacing)
-		print(#function, currentEndDragPosition, contentOffsetX)
+//		print(#function, currentEndDragPosition, contentOffsetX)
 		moveCard(to: currentEndDragPosition)
 	}
 	
@@ -148,9 +141,7 @@ extension ViewController : UICollectionViewDataSource {
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-		cell.backgroundColor = randomColor()
-		cell.layer.cornerRadius = 18
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CardCollectionViewCell
 		return cell
 	}
 	
