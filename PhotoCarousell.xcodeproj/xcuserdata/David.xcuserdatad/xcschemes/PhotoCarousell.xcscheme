@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "636F67A71DA39FF9006E9164"
+               BuildableName = "PhotoCarousell.app"
+               BlueprintName = "PhotoCarousell"
+               ReferencedContainer = "container:PhotoCarousell.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -12,7 +28,36 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "636F67BB1DA39FF9006E9164"
+               BuildableName = "PhotoCarousellTests.xctest"
+               BlueprintName = "PhotoCarousellTests"
+               ReferencedContainer = "container:PhotoCarousell.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "636F67C61DA39FF9006E9164"
+               BuildableName = "PhotoCarousellUITests.xctest"
+               BlueprintName = "PhotoCarousellUITests"
+               ReferencedContainer = "container:PhotoCarousell.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "636F67A71DA39FF9006E9164"
+            BuildableName = "PhotoCarousell.app"
+            BlueprintName = "PhotoCarousell"
+            ReferencedContainer = "container:PhotoCarousell.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -26,6 +71,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "636F67A71DA39FF9006E9164"
+            BuildableName = "PhotoCarousell.app"
+            BlueprintName = "PhotoCarousell"
+            ReferencedContainer = "container:PhotoCarousell.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -35,6 +90,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "636F67A71DA39FF9006E9164"
+            BuildableName = "PhotoCarousell.app"
+            BlueprintName = "PhotoCarousell"
+            ReferencedContainer = "container:PhotoCarousell.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
