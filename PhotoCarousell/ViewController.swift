@@ -51,7 +51,10 @@ public class ViewController: UIViewController {
 	public override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		moveCardToInitalLocation()
+		let delay = DispatchTime.now() + Double(Int64(Double(NSEC_PER_SEC) * 5.0)) / Double(NSEC_PER_SEC)
+		DispatchQueue.main.asyncAfter(deadline: delay, execute: {
+			self.moveCardToInitalLocation()
+		})
 	}
 
 	@IBAction func previoudButtonClicked(_ sender: Any) {
@@ -79,7 +82,7 @@ public class ViewController: UIViewController {
 		moveCard(toRawOffset: scrollView.contentOffset.x)
 	}
 
-	fileprivate func moveCard(to cardPosition: CGFloat) {
+	fileprivate func moveCard(to cardPosition: CGFloat, animated: Bool = true) {
 		print(#function, "is moving to ", cardPosition)
 		guard cardPosition >= 0.0 else {
 			moveCard(to: 0.0)
@@ -97,35 +100,24 @@ public class ViewController: UIViewController {
 			let flipSensitiveConstant: CGFloat = 0.1
 			if markedCardOffsetX > cardPosition {
 				// move backward
-				print("is going to previous page")
-				if remainder < 1.0 - flipSensitiveConstant {
-					// flip
-					return max(0.0, floor(cardPosition))
-				} else {
-					// stay the same
-					return ceil(cardPosition)
-				}
+				// flip : stay on same page
+				return remainder < 1.0 - flipSensitiveConstant ? max(0.0, floor(cardPosition)) : ceil(cardPosition)
 			} else {
 				// move forward
 				print("is going to next page")
-				if remainder > flipSensitiveConstant {
-					// flip
-					return ceil(cardPosition)
-				} else {
-					// stay the same
-					return floor(cardPosition)
-				}
+				// flip : stay on same page
+				return remainder > flipSensitiveConstant ? ceil(cardPosition) : floor(cardPosition)
 			}
 		}()
 		print("next position \(nextPosition)")
 		print("")
 		let nextOffset: CGFloat = nextPosition * (width + itemSpacing) - initialOffsetX
 		let contentOffset: CGPoint = CGPoint(x: nextOffset, y: 0)
-		photoCarousellCollectionView.setContentOffset(contentOffset, animated: true)
+		photoCarousellCollectionView.setContentOffset(contentOffset, animated: animated)
 	}
 	
 	fileprivate func moveCardToInitalLocation() {
-		moveCard(to: 0.0)
+		moveCard(to: 0.0, animated: true)
 	}
 	
 	fileprivate func moveToPreviousCard() {
