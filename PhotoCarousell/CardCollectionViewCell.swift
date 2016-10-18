@@ -87,7 +87,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		}
 		cardTagViews.forEach {
 			$0.color = randomColor()
-			$0.title = "YAA"
+			$0.title = String.arbitrary(forLength: 5)
 			$0.move(4, pointTopOf: cardImageBottomBar)
 			cardContentImageView.addSubview($0)
 		}
@@ -149,7 +149,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		eventParticipantExtraInfoLabel.frame.origin.x = (eventParticipantImageViews.last?.frame.maxX ?? 0.0) + spacing
 		eventParticipantExtraInfoLabel.center.y = cardImageBottomBar.bounds.height / 2
 		
-		eventParticipantExtraInfoLabel.text = "yaaaaaaayaaaaaaayaaaaaaayaaaaaaa"
+		eventParticipantExtraInfoLabel.text = String.arbitrary(forLength: 12)
 		
 		cardImageBottomBar.addSubview(eventParticipantExtraInfoLabel)
 	}
@@ -165,7 +165,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		cardTopTitleLabel.font = UIFont.systemFont(ofSize: 11)
 		cardTopTitleLabel.textColor = UIColor.orange
 		
-		cardTopTitleLabel.text = "Taaa"
+		cardTopTitleLabel.text = String.arbitrary(forLength: 10)
 		
 		cardContentContainerView.addSubview(cardTopTitleLabel)
 	}
@@ -182,7 +182,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		cardMainTitleLabel.font = UIFont.systemFont(ofSize: 20)
 		cardMainTitleLabel.textColor = UIColor.orange
 		
-		cardMainTitleLabel.text = "Taaapopopoaskq"
+		cardMainTitleLabel.text = String.arbitrary(forLength: 20)
 		
 		cardContentContainerView.addSubview(cardMainTitleLabel)
 	}
@@ -200,7 +200,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		cardContentTimeLabel.font = UIFont.systemFont(ofSize: 14)
 		cardContentTimeLabel.textColor = UIColor.gray
 		
-		cardContentTimeLabel.text = "aassda"
+		cardContentTimeLabel.text = String.arbitrary(forLength: 10)
 		
 		cardContentContainerView.addSubview(cardContentTimeLabel)
 	}
@@ -218,7 +218,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		cardContentLocationLabel.font = UIFont.systemFont(ofSize: 14)
 		cardContentLocationLabel.textColor = UIColor.cyan
 		
-		cardContentLocationLabel.text = "aassda"
+		cardContentLocationLabel.text = String.arbitrary(forLength: 10)
 		
 		cardContentContainerView.addSubview(cardContentLocationLabel)
 	}
@@ -236,7 +236,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		cardContentLinkLabel.font = UIFont.systemFont(ofSize: 14)
 		cardContentLinkLabel.textColor = UIColor.cyan
 		
-		cardContentLinkLabel.text = "aassda"
+		cardContentLinkLabel.text = String.arbitrary(forLength: 10)
 		
 		cardContentContainerView.addSubview(cardContentLinkLabel)
 	}
@@ -260,7 +260,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		cardContentDescriptionLabel.textColor = UIColor.gray
 		cardContentDescriptionLabel.numberOfLines = Int(cardContentDescriptionLabel.bounds.height / fontSize)
 		
-		cardContentDescriptionLabel.text = "aassda\ntt\nabc\nyyyyy"
+		cardContentDescriptionLabel.text = String.arbitrary(forLength: 120)
 		
 		cardContentContainerView.addSubview(cardContentDescriptionLabel)
 	}

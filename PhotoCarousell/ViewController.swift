@@ -85,6 +85,21 @@ public class ViewController: UIViewController {
 		moveCard(to: CGFloat(DBL_MAX))
 	}
 	
+	@IBAction func goToMapClicked(_ sender: Any) {
+		if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://") as! URL)) {
+			UIApplication.shared.openURL(NSURL(string:
+				"comgooglemaps://?center=40.765819,-73.975866&zoom=14&views=traffic")! as URL)
+			
+		} else if (UIApplication.shared.canOpenURL(NSURL(string:"http://maps.apple.com") as! URL)) {
+			UIApplication.shared.openURL(NSURL(string:
+				"http://maps.apple.com/?q=Mexican+Restaurant&sll=50.894967,4.341626&z=10&t=s")! as URL)
+		} else {
+			print("Can't use comgooglemaps://");
+		}
+		
+		
+	}
+	
 	override public func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.

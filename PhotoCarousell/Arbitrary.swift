@@ -31,8 +31,17 @@ func tabulate<A>(times: Int, transform: (Int) -> A) -> [A] {
 }
 
 extension String : Arbitrary {
+	
+	internal static func arbitrary() -> String {
+		let randomLength = Int.random(from: 0, to: 40)
+		let randomCharaters = tabulate(times: randomLength) { _ in
+			Character.arbitrary()
+		}
+		return String(randomCharaters)
+	}
+
 	static func arbitrary(forLength l: Int) -> String {
-		let randomLength = Int.random(from: 0, to: l)
+		let randomLength = Int.random(from: 1, to: l)
 		let randomCharaters = tabulate(times: randomLength) { _ in
 			Character.arbitrary()
 		}
