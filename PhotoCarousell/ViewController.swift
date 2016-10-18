@@ -13,7 +13,18 @@ public class ViewController: UIViewController {
 	private var photoCarousellCollectionView: UICollectionView!
 	private var photoCarousellCollectionViewFlowLayout: UICollectionViewFlowLayout!
 //	fileprivate let datumn: [String] = ["","","","",""]
-	fileprivate let datumn: [String] = ["","","","","","","","","","","","","","","","",""]
+	fileprivate let datumn: [String] = ["r1.jpg",
+	                                    "p1.jpg",
+	                                    "p2.jpg",
+	                                    "p3.jpg",
+	                                    "p2.jpg",
+	                                    "p1.jpg",
+	                                    "p2.jpg",
+	                                    "p3.jpg",
+	                                    "p2.jpg",
+	                                    "p1.jpg",
+	                                    "p2.jpg",
+	                                    "p3.jpg"]
 	fileprivate let cellIdentifier = "cell"
 	let width: CGFloat = UIScreen.main.bounds.width * 0.8
 	let itemSpacing: CGFloat = 12
@@ -51,8 +62,9 @@ public class ViewController: UIViewController {
 	public override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		let delay = DispatchTime.now() + Double(Int64(Double(NSEC_PER_SEC) * 5.0)) / Double(NSEC_PER_SEC)
+		let delay = DispatchTime.now() + Double(Int64(Double(NSEC_PER_SEC) * 1.0)) / Double(NSEC_PER_SEC)
 		DispatchQueue.main.asyncAfter(deadline: delay, execute: {
+			self.moveCard(to: 3.0, animated: false)
 			self.moveCardToInitalLocation()
 		})
 	}
@@ -161,6 +173,7 @@ extension ViewController : UICollectionViewDataSource {
 	
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CardCollectionViewCell
+		cell.imageName = datumn[indexPath.row]
 		return cell
 	}
 	
