@@ -29,6 +29,7 @@ final public class CardTagView: UIView {
 		self.init(frame: CGRect(x: 0, y: 0, width: 44, height: 21))
 		configureTagTitleLabel()
 		backgroundColor = UIColor.cyan
+		layer.cornerRadius = 2.0
 	}
 	
 	private override init(frame: CGRect) {

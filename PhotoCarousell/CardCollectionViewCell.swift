@@ -60,6 +60,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		configureCardImageBottomBar()
 		configureEventParticipantImageViews()
 		configureEventParticipantExtraInfoLabel()
+		configureCardTagViews()
 	}
 	
 	private func configureCardImageBottomBar() {
@@ -88,6 +89,7 @@ open class CardCollectionViewCell: UICollectionViewCell {
 			$0.color = randomColor()
 			$0.title = "YAA"
 			$0.move(4, pointTopOf: cardImageBottomBar)
+			cardContentImageView.addSubview($0)
 		}
 	}
 	
