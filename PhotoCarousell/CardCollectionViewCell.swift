@@ -11,7 +11,7 @@ import UIKit
 open class CardCollectionViewCell: UICollectionViewCell {
 	
 	private var cardContentImageView: UIImageView!
-	private var cardTagViews: [UIView] = []
+	private var cardTagViews: [CardTagView] = []
 	private var cardImageBottomBar: UIView!
 	private var eventParticipantImageViews: [UIImageView] = []
 	private var eventParticipantExtraInfoLabel: UILabel!
@@ -72,6 +72,23 @@ open class CardCollectionViewCell: UICollectionViewCell {
 		cardImageBottomBar.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 		
 		cardContentImageView.addSubview(cardImageBottomBar)
+	}
+	
+	private func configureCardTagViews() {
+		for _ in 1...5 {
+			cardTagViews.append(CardTagView())
+		}
+		let initialPosition: CGFloat = 18
+		let spacing: CGFloat = 6
+		_ = cardTagViews.reduce(initialPosition) { (offset, tag) -> CGFloat in
+			tag.frame.origin.x = offset
+			return tag.frame.maxX + spacing
+		}
+		cardTagViews.forEach {
+			$0.color = randomColor()
+			$0.title = "YAA"
+			$0.move(4, pointTopOf: cardImageBottomBar)
+		}
 	}
 	
 	private func configureCardContentContainerView() {
