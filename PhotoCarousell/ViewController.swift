@@ -86,18 +86,27 @@ public class ViewController: UIViewController {
 	}
 	
 	@IBAction func goToMapClicked(_ sender: Any) {
-		if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://") as! URL)) {
-			UIApplication.shared.openURL(NSURL(string:
-				"comgooglemaps://?center=40.765819,-73.975866&zoom=14&views=traffic")! as URL)
-			
-		} else if (UIApplication.shared.canOpenURL(NSURL(string:"http://maps.apple.com") as! URL)) {
-			UIApplication.shared.openURL(NSURL(string:
-				"http://maps.apple.com/?q=Mexican+Restaurant&sll=50.894967,4.341626&z=10&t=s")! as URL)
-		} else {
-			print("Can't use comgooglemaps://");
-		}
 		
 		
+		let alert = UIAlertController(title: "開啟地圖", message: "請問你要使用甚麼地圖開啟？", preferredStyle: UIAlertControllerStyle.actionSheet)
+		let gmap = UIAlertAction(title: "Google map", style: UIAlertActionStyle.default, handler: { action in
+			if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://") as! URL)) {
+				UIApplication.shared.openURL(NSURL(string:
+					"comgooglemaps://?center=40.765819,-73.975866&zoom=14&views=traffic")! as URL)
+				
+			}
+		})
+		let applemap = UIAlertAction(title: "Apple map", style: UIAlertActionStyle.default, handler: { action in
+			if (UIApplication.shared.canOpenURL(NSURL(string:"http://maps.apple.com") as! URL)) {
+				UIApplication.shared.openURL(NSURL(string:
+					"http://maps.apple.com/?q=Mexican+Restaurant&sll=50.894967,4.341626&z=10&t=s")! as URL)
+			}
+		})
+		let cancel = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
+		alert.addAction(gmap)
+		alert.addAction(applemap)
+		alert.addAction(cancel)
+		DispatchQueue.main.async { self.present(alert, animated: true, completion: nil) }
 	}
 	
 	override public func didReceiveMemoryWarning() {
