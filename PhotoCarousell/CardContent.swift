@@ -60,21 +60,30 @@ extension CardContent : JSONDecodable {
 		guard let name = json[Keys.name].string else { throw JSONDecodableError.parseError }
 		guard let organizer = json[Keys.organizer].string else { throw JSONDecodableError.parseError }
 		guard let featureImageURL = json[Keys.featureImageURL].string else { throw JSONDecodableError.parseError }
-		guard let tags = json[Keys.].string else { throw JSONDecodableError.parseError }
-		guard let attendees = json[Keys.].string else { throw JSONDecodableError.parseError }
-		guard let friends = json[Keys.].string else { throw JSONDecodableError.parseError }
-		guard let others = json[Keys.attendees][Keys.others].string else { throw JSONDecodableError.parseError }
-		guard let url = json[Keys.url].string else { throw JSONDecodableError.parseError }
+		guard let attendeeImageURLs = json[Keys.attendees][Keys.friends].arrayObject as? [String] else { throw JSONDecodableError.parseError }
 		guard let urlExcerpt = json[Keys.urlExcerpt].string else { throw JSONDecodableError.parseError }
 		guard let excerpt = json[Keys.excerpt].string else { throw JSONDecodableError.parseError }
-		guard let info = json[Keys.info].string else { throw JSONDecodableError.parseError }
-		guard let address = json[Keys.location.address].string else { throw JSONDecodableError.parseError }
-		guard let supplement = json[Keys.location.supplement].string else { throw JSONDecodableError.parseError }
-		guard let longtitude = json[Keys.location.longtitude].string else { throw JSONDecodableError.parseError }
-		guard let latitude = json[Keys.location.latitude].string else { throw JSONDecodableError.parseError }
 		guard let startTime = Date.dateFrom(iso8601: json[Keys.startTime].string) else { throw JSONDecodableError.parseError }
 		guard let endTime = Date.dateFrom(iso8601: json[Keys.endTime].string) else { throw JSONDecodableError.parseError }
 		
+		self.id = id
+		self.day = day
+		self.name = name
+		self.organizer = organizer
+		self.featureImageURL = featureImageURL
+		self.tags = CardTagContent.generateTags(with: json[Keys.tags])
+		self.attendeeImageURLs = attendeeImageURLs
+		self.others = json[Keys.attendees][Keys.others].string
+		self.url = json[Keys.url].string
+		self.urlExcerpt = urlExcerpt
+		self.excerpt = excerpt
+		self.info = json[Keys.info].string
+		self.location = (json[Keys.location.address].string,
+		                 json[Keys.location.supplement].string,
+		                 json[Keys.location.longtitude].double,
+		                 json[Keys.location.latitude].double)
+		self.startTime = startTime
+		self.endTime = endTime
 	}
 	
 }
