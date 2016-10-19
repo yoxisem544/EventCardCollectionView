@@ -18,6 +18,22 @@ public struct CardTagContent {
 	let name: String?
 	let color: UIColor?
 	
+	public static func generateTags(with json: JSON)-> [CardTagContent] {
+		var contents: [CardTagContent] = []
+		if json.type == .array {
+			for (_, json) in json {
+				if let tag = try? CardTagContent(decodeWith: json) {
+					contents.append(tag)
+				}
+			}
+		} else {
+			if let tag = try? CardTagContent(decodeWith: json) {
+				contents.append(tag)
+			}
+		}
+		return contents
+	}
+	
 }
 
 extension CardTagContent : JSONDecodable {
