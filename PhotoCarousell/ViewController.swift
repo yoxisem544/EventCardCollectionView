@@ -197,7 +197,7 @@ extension ViewController : UICollectionViewDataSource {
 	
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CardCollectionViewCell
-		cell.imageName = datumn[indexPath.row]
+//		cell.imageName = datumn[indexPath.row]
 		return cell
 	}
 	

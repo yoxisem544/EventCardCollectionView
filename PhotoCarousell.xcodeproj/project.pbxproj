@@ -13,6 +13,8 @@
 		630F86881DB719960007C82E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F86871DB719960007C82E /* SwiftyJSON.swift */; };
 		630F868A1DB71A110007C82E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F86891DB71A110007C82E /* UIColorExtension.swift */; };
 		630F868C1DB71D950007C82E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F868B1DB71D950007C82E /* DateExtension.swift */; };
+		630F868E1DB7240D0007C82E /* CardContentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F868D1DB7240D0007C82E /* CardContentContainerView.swift */; };
+		630F86901DB726BA0007C82E /* CardImageContentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F868F1DB726BA0007C82E /* CardImageContentContainerView.swift */; };
 		636F67AC1DA39FF9006E9164 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F67AB1DA39FF9006E9164 /* AppDelegate.swift */; };
 		636F67AE1DA39FF9006E9164 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F67AD1DA39FF9006E9164 /* ViewController.swift */; };
 		636F67B11DA39FF9006E9164 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636F67AF1DA39FF9006E9164 /* Main.storyboard */; };
@@ -56,6 +58,8 @@
 		630F86871DB719960007C82E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		630F86891DB71A110007C82E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		630F868B1DB71D950007C82E /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		630F868D1DB7240D0007C82E /* CardContentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentContainerView.swift; sourceTree = "<group>"; };
+		630F868F1DB726BA0007C82E /* CardImageContentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardImageContentContainerView.swift; sourceTree = "<group>"; };
 		636F67A81DA39FF9006E9164 /* PhotoCarousell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCarousell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		636F67AB1DA39FF9006E9164 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		636F67AD1DA39FF9006E9164 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,8 +136,10 @@
 				636F67AB1DA39FF9006E9164 /* AppDelegate.swift */,
 				636F67AD1DA39FF9006E9164 /* ViewController.swift */,
 				6387C3081DB4AB5300710740 /* CardCollectionViewCell.swift */,
-				637E39FF1DB6191800CB5182 /* Arbitrary.swift */,
+				630F868F1DB726BA0007C82E /* CardImageContentContainerView.swift */,
+				630F868D1DB7240D0007C82E /* CardContentContainerView.swift */,
 				637E39FD1DB6152600CB5182 /* CardTagView.swift */,
+				637E39FF1DB6191800CB5182 /* Arbitrary.swift */,
 				630F86811DB7179E0007C82E /* CardContent.swift */,
 				630F86831DB719210007C82E /* CardTagContent.swift */,
 				630F86891DB71A110007C82E /* UIColorExtension.swift */,
@@ -315,8 +321,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				636F67AE1DA39FF9006E9164 /* ViewController.swift in Sources */,
+				630F868E1DB7240D0007C82E /* CardContentContainerView.swift in Sources */,
 				630F868C1DB71D950007C82E /* DateExtension.swift in Sources */,
 				6387C3091DB4AB5300710740 /* CardCollectionViewCell.swift in Sources */,
+				630F86901DB726BA0007C82E /* CardImageContentContainerView.swift in Sources */,
 				630F86821DB7179E0007C82E /* CardContent.swift in Sources */,
 				630F86881DB719960007C82E /* SwiftyJSON.swift in Sources */,
 				637E3A001DB6191800CB5182 /* Arbitrary.swift in Sources */,

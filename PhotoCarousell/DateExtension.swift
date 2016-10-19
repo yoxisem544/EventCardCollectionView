@@ -55,41 +55,41 @@ extension Date {
 		return "\(year)/\(month)/\(day) \(hour):\(minute.toMinuteString())"
 	}
 	
-	var timePickerRepresentation: String {
-		return "\(month)月\(day)日 \(weekday.toString())"
-	}
-	
-	var timePickerChoosedDateRepresentation: String {
-		return "\(year)年\(month)月\(day)日 \(weekday.toString()) \(hour):\(minute.toMinuteString())"
-	}
-	
-	var repeatEndTimeRepresentation: String {
-		return "\(year) \(month)月\(day)日 \(weekday.toString())"
-	}
-	
-	var childEventTimeRepresentation: String {
-		let minute = self.minute < 10 ? "0\(self.minute)" : "\(self.minute)"
-		return "\(year) \(month)月\(day)日 \(weekday.toString()) \(hour):\(minute)"
-	}
-	
-	var childEventPeriodTimeRepresentation: String {
-		let minute = self.minute < 10 ? "0\(self.minute)" : "\(self.minute)"
-		return "\(weekday.toString()) \(hour):\(minute)"
-	}
+//	var timePickerRepresentation: String {
+//		return "\(month)月\(day)日 \(weekday.toString())"
+//	}
+//	
+//	var timePickerChoosedDateRepresentation: String {
+//		return "\(year)年\(month)月\(day)日 \(weekday.toString()) \(hour):\(minute.toMinuteString())"
+//	}
+//	
+//	var repeatEndTimeRepresentation: String {
+//		return "\(year) \(month)月\(day)日 \(weekday.toString())"
+//	}
+//	
+//	var childEventTimeRepresentation: String {
+//		let minute = self.minute < 10 ? "0\(self.minute)" : "\(self.minute)"
+//		return "\(year) \(month)月\(day)日 \(weekday.toString()) \(hour):\(minute)"
+//	}
+//	
+//	var childEventPeriodTimeRepresentation: String {
+//		let minute = self.minute < 10 ? "0\(self.minute)" : "\(self.minute)"
+//		return "\(weekday.toString()) \(hour):\(minute)"
+//	}
 
-	public func mondayOfTheWeek() -> Date? {
-		// cause monday is 2, 0 offset is monday.
-		// -1 is sunday.
-		let daysToMonday = self.weekday.toCalendarIntValue() - 2
-		
-		if daysToMonday >= 0 {
-			guard let monday = self.dateBySubtractingDay(daysToMonday) else { return nil }
-			return Date.create(dateOnYear: monday.year, month: monday.month, day: monday.day)
-		} else {
-			guard let monday = self.dateBySubtractingDay(6) else { return nil }
-			return Date.create(dateOnYear: monday.year, month: monday.month, day: monday.day)
-		}
-	}
+//	public func mondayOfTheWeek() -> Date? {
+//		// cause monday is 2, 0 offset is monday.
+//		// -1 is sunday.
+//		let daysToMonday = self.weekday.toCalendarIntValue() - 2
+//		
+//		if daysToMonday >= 0 {
+//			guard let monday = self.dateBySubtractingDay(daysToMonday) else { return nil }
+//			return Date.create(dateOnYear: monday.year, month: monday.month, day: monday.day)
+//		} else {
+//			guard let monday = self.dateBySubtractingDay(6) else { return nil }
+//			return Date.create(dateOnYear: monday.year, month: monday.month, day: monday.day)
+//		}
+//	}
 
 	public var rruleFormatString: String {
 		let formatter = DateFormatter()
@@ -238,11 +238,11 @@ extension Date {
 	/// sun mon tue wen thu fri sat
 	///  1   2   3   4   5   6   7
 	/// ```
-	var weekday: Weekday {
-		let weekdayRawValue = (Calendar.current as NSCalendar).component(NSCalendar.Unit.weekday, from: self)
-		// this value should not fail
-		return Weekday(withRawValue: weekdayRawValue)!
-	}
+//	var weekday: Weekday {
+//		let weekdayRawValue = (Calendar.current as NSCalendar).component(NSCalendar.Unit.weekday, from: self)
+//		// this value should not fail
+//		return Weekday(withRawValue: weekdayRawValue)!
+//	}
 	
 	var year: Int {
 		return (Calendar.current as NSCalendar).components(NSCalendar.Unit.year, from: self).year!
