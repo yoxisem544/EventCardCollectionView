@@ -22,7 +22,7 @@ public struct CardTagContent {
 
 extension CardTagContent : JSONDecodable {
 	
-	init(decodeWith json: JSON) throws {
+	public init(decodeWith json: JSON) throws {
 		guard let name = json[Keys.name].string else { throw JSONDecodableError.parseError }
 		guard let colorString = json[Keys.color].string else { throw JSONDecodableError.parseError }
 		self.name = name
