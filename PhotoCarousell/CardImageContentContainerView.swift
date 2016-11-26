@@ -16,6 +16,12 @@ final public class CardImageContentContainerView: UIView {
 	private var eventParticipantImageViews: [UIImageView] = []
 	private var eventParticipantExtraInfoLabel: UILabel!
 	
+	public var imageName: String? {
+		didSet {
+			cardContentImageView.image = UIImage(named: imageName ?? "")
+		}
+	}
+	
 	// MARK: - Init
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
